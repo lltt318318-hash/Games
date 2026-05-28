@@ -251,9 +251,119 @@
             <p style="color: var(--ios-gray); font-size: 13px; margin-bottom: 12px; line-height: 1.4;">在下方粘贴 AI 为你生成的 JSON 题库文本：</p>
             <textarea id="json-input" placeholder='[
   {
-    "title": "示例：在 Java 中，哪个关键字用于创建对象实例？",
-    "options": ["new", "class", "instance", "import"],
-    "answer": "new"
+  [
+  {
+    "title": "下面是一组有关Java程序的描述，其中错误的是（ ）。",
+    "options": ["Java程序的最大优点是它的跨平台特性", "Java程序是依赖于JVM解释执行的", "Java程序由一个或多个类组成其中包含main()方法的类为主类，它是程序的入口", "Java程序也可编译成可执行程序，直接运行"],
+    "answer": "Java程序也可编译成可执行程序，直接运行"
+  },
+  {
+    "title": "下面是一组关于JDK的描述，其中正确的是（ ）。",
+    "options": ["JDK只能用于运行Java程序", "JDK是一个Java程序开发平台，既可以编译Java程序，也可以运行Java程序", "JDK是一个Java程序编辑器", "JDK只能编译Java程序，但无法运行Java程序"],
+    "answer": "JDK是一个Java程序开发平台，既可以编译Java程序，也可以运行Java程序"
+  },
+  {
+    "title": "下面是一组关于Eclipse的描述，其中错误的是（ ）。",
+    "options": ["Eclipse是一个开放源代码的，基于Java的可扩展开发平台", "Eclipse可编写、编译、运行Java程序", "Eclipse实际上是一个插件，它必须依赖JDK才能工作", "Eclipse自身功能非常完善，无须任何环境支持"],
+    "answer": "Eclipse自身功能非常完善，无须任何环境支持"
+  },
+  {
+    "title": "下面是一组关于Java类的描述，其中错误的是（ ）。",
+    "options": ["所有Java程序都是由一个或多个类组成的", "Java程序中只能有一个Public（公共）类", "Java程序中只能一个主类", "Java主程序不能是类，否则无法运行程序"],
+    "answer": "Java主程序不能是类，否则无法运行程序"
+  },
+  {
+    "title": "javac命令的作用是（ ）。",
+    "options": ["将源程序编译成字节码", "将字节码编译成源程序", "解释执行Java字节码", "调试Java代码"],
+    "answer": "将源程序编译成字节码"
+  },
+  {
+    "title": "java命令的作用是（ ）。",
+    "options": ["将源程序编译成字节码", "将字节码编译成源程序", "解释执行Java字节码", "调试Java代码"],
+    "answer": "解释执行Java字节码"
+  },
+  {
+    "title": "Java虚拟机运行Java代码时，不会进行的操作是（ ）。",
+    "options": ["加载代码", "校验代码", "编译代码", "执行代码"],
+    "answer": "编译代码"
+  },
+  {
+    "title": "下面哪个是合法的标识符（ ）。",
+    "options": ["class", "<weight>", "_name", "3color"],
+    "answer": "_name"
+  },
+  {
+    "title": "下面哪个是Java的关键字（ ）。",
+    "options": ["radius", "x", "y", "int"],
+    "answer": "int"
+  },
+  {
+    "title": "若a=13,b=5，表达式a++%b的值是（ ）。",
+    "options": ["0", "1", "3", "4"],
+    "answer": "3"
+  },
+  {
+    "title": "下面说法不正确的是（ ）。",
+    "options": ["一个表达式可以作为其他表达式的操作数", "单个常量或变量也是表达式", "表达式中各操作数的数据类型必须相同", "表达式的类型可以和操作数的类型不一样"],
+    "answer": "表达式中各操作数的数据类型必须相同"
+  },
+  {
+    "title": "下面表达式不正确的是（ ）。",
+    "options": ["byte b=256;", "int a=0125;", "float f=13.14F;", "double d=520D;"],
+    "answer": "byte b=256;"
+  },
+  {
+    "title": "已知i=0xffffffff，j=0x0，下面表达式值为0的是（ ）。",
+    "options": ["i<<2", "i&j", "i^j", "i|j"],
+    "answer": "i&j"
+  },
+  {
+    "title": "下面语句不能编译成功的是（ ）。",
+    "options": ["int a=1+2+3;", "double d=(int)(1+2+3);", "float f=1+(int)(2.1+3.1);", "int a=(int)1.1+2.2;"],
+    "answer": "int a=(int)1.1+2.2;"
+  },
+  {
+    "title": "Java属于以下哪种语言?",
+    "options": ["机器语言", "汇编语言", "高级语言", "以上都不对"],
+    "answer": "高级语言"
+  },
+  {
+    "title": "下面哪种类型的文件可以在Java虚拟机中运行?",
+    "options": [".java", ".jre", ".exe", ".class"],
+    "answer": ".class"
+  },
+  {
+    "title": "安装好JDK后，在其bin目录下有许多exe可执行文件，其中java.exe命令的作用是以下哪一种?",
+    "options": ["Java文档制作工具", "Java解释器", "Java编译器", "Java启动器"],
+    "answer": "Java解释器"
+  },
+  {
+    "title": "如果jdk的安装路径为d:\\jdk，若想在命令窗口中任何当前路径下，都可以直接使用javac和java命令，需要将环境变量path设置为以下哪个选项?",
+    "options": ["d: \\jdk;", "d: \\jdk\\bin;", "d:\\jre\\ bin;", "d: \\jre;"],
+    "answer": "d: \\jdk\\bin;"
+  },
+  {
+    "title": "以下关于变量的说法错误的是?",
+    "options": ["变量名必须是一个有效的标识符", "变量在定义时可以没有初始值", "变量一旦被定义，在程序中的任何位置都可以被访问", "在程序中，可以将一个byte类型的值赋给一个int类型的变量，不需要特殊声明"],
+    "answer": "变量一旦被定义，在程序中的任何位置都可以被访问"
+  },
+  {
+    "title": "假设int x = 2,三元表达式x>0? x+1:5的运行结果是以下哪一个?",
+    "options": ["0", "2", "3", "5"],
+    "answer": "3"
+  },
+  {
+    "title": "以下哪个选项可以正确创建个一长度为3的二维数组?",
+    "options": ["new int [2][3];", "new int[3][ ]", "new int[][3];", "以上答案皆不对"],
+    "answer": "new int[3][ ]"
+  },
+  {
+    "title": "请先阅读下面的代码：\nint x =1;\nint y =2;\nif(x% 2==0){\ny++;\n}else{\ny--;\n}\nsystem.out.println (\"y= \"Html+y);\n上面一段程序运行结束时，变量y的值为下列哪一项?",
+    "options": ["0", "1", "2", "3"],
+    "answer": "1"
+  }
+]
+
   }
 ]'></textarea>
         </div>
