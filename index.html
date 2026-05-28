@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>全能全科闪卡题库</title>
+    <title> 选择题题库</title>
     <style>
         :root {
             --ios-blue: #007AFF;
@@ -33,7 +33,6 @@
         .ios-btn { display: block; width: 100%; background-color: var(--ios-blue); color: white; font-size: 16px; font-weight: 600; padding: 14px; border: none; border-radius: 12px; cursor: pointer; text-align: center; transition: opacity 0.2s, transform 0.1s; }
         .ios-btn:active { opacity: 0.8; transform: scale(0.98); }
         
-        /* 页面翻页组件布局 */
         .page-ctrl-box { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
         .page-btn { flex: 1; background-color: #E5E5EA; color: var(--ios-blue); font-size: 15px; font-weight: 600; padding: 12px; border: none; border-radius: 10px; cursor: pointer; text-align: center; }
         .page-btn:active { opacity: 0.7; }
@@ -45,28 +44,16 @@
         .progress-bar { flex-grow: 1; height: 6px; background: #E5E5EA; border-radius: 3px; margin-right: 12px; overflow: hidden; }
         .progress-inner { height: 100%; background: var(--ios-blue); width: 0%; transition: width 0.3s ease; }
         
-        /* 标签与题目 */
         .type-tag { display: inline-block; padding: 2px 6px; font-size: 11px; font-weight: 600; border-radius: 4px; margin-bottom: 8px; text-transform: uppercase; }
         .tag-choice { background: #E1F5FE; color: #0288D1; }
-        .tag-fill { background: #E8F5E9; color: #388E3C; }
-        .tag-judge { background: #EDE7F6; color: #5E35B1; }
-        .tag-flash { background: #FFF3E0; color: #F57C00; }
         
         .question-title { font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 20px; white-space: pre-wrap; }
         .options-list { list-style: none; }
         .option-item { background: #FFFFFF; border: 1px solid #E5E5EA; padding: 16px; margin-bottom: 12px; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
         .option-item:active { background: #F2F2F7; }
-        .option-item.selected { border-color: var(--ios-blue); background-color: #E3F2FD; }
         .option-item.correct { background-color: #E8F5E9 !important; border-color: var(--ios-green) !important; color: var(--ios-green); font-weight: 600; }
         .option-item.wrong { background-color: #FFEBEE !important; border-color: var(--ios-red) !important; color: var(--ios-red); font-weight: 600; }
         
-        .fill-input { width: 100%; padding: 14px; border: 1px solid #E5E5EA; border-radius: 12px; font-size: 16px; margin-bottom: 15px; outline: none; }
-        .fill-input:focus { border-color: var(--ios-blue); }
-        .feedback-box { padding: 15px; border-radius: 12px; margin-top: 15px; font-size: 15px; display: none; line-height: 1.4; }
-        .feedback-box.correct { display: block; background: #E8F5E9; color: #2E7D32; border: 1px solid var(--ios-green); }
-        .feedback-box.wrong { display: block; background: #FFEBEE; color: #C62828; border: 1px solid var(--ios-red); }
-        .flash-answer { display: none; background: #FFF9C4; border: 1px solid var(--ios-orange); color: #F57F17; padding: 15px; border-radius: 12px; margin-top: 15px; white-space: pre-wrap; font-family: monospace; font-size: 14px; }
-
         .wrong-item { border-bottom: 1px solid #E5E5EA; padding: 16px 0; }
         .wrong-item:last-child { border-bottom: none; }
         .wrong-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; white-space: pre-wrap; }
@@ -85,34 +72,28 @@
 <div class="phone-wrapper">
     <div class="header" id="page-title">智能刷题</div>
 
-    <!-- 1. 导入页面 -->
     <div id="upload-panel" class="panel">
         <div class="ios-card">
-            <h2>导入全能题库</h2>
-            <p style="color: var(--ios-gray); font-size: 13px; margin-bottom: 12px; line-height: 1.4;">支持单选、多选、判断、填空、问答混合JSON题库：</p>
-            <textarea id="json-input" placeholder="请在此粘贴生成的全功能 JSON 数据..."></textarea>
+            <h2>更新内置题库</h2>
+            <p style="color: var(--ios-gray); font-size: 13px; margin-bottom: 12px; line-height: 1.4;">以后有新增题库，可以随时粘贴到下面覆盖默认内容：</p>
+            <textarea id="json-input" placeholder="请在此粘贴新生成的 JSON 数据..."></textarea>
         </div>
-        <button class="ios-btn" onclick="importQuestions()">更新并本地存储题库</button>
+        <button class="ios-btn" onclick="importQuestions()">更新本地缓存题库</button>
     </div>
 
-    <!-- 2. 刷题页面 -->
     <div id="quiz-panel" class="panel active">
         <div class="progress-container">
             <div class="progress-bar"><div id="progress" class="progress-inner"></div></div>
             <span id="progress-text">0/0</span>
         </div>
-        <div id="quiz-container">
-            <!-- 题目渲染核心 -->
-        </div>
+        <div id="quiz-container"></div>
         
-        <!-- 上一题 / 下一题 控制台 -->
         <div class="page-ctrl-box" id="page-ctrl-nav">
             <button class="page-btn" id="prev-btn" onclick="prevQuestion()">⬅️ 上一题</button>
             <button class="page-btn" id="next-btn" onclick="skipToNext()">下一题 ➡️</button>
         </div>
     </div>
 
-    <!-- 3. 错题本页面 -->
     <div id="wrong-book-panel" class="panel">
         <div class="ios-card" style="padding: 10px 20px;">
             <div id="wrong-list"></div>
@@ -128,20 +109,293 @@
 </nav>
 
 <script>
-    let allQuestions = JSON.parse(localStorage.getItem('mixQuestions')) || []; 
+    // 💡 46 道精简无杂质题库，直接永久内嵌在网页里了！
+    const defaultQuestions = [
+      {
+        "type": "single",
+        "title": "1. 下面是一组有关Java程序的描述，其中错误的是（ ）。",
+        "options": ["Java程序的最大优点是它的跨平台特性", "Java程序是依赖于JVM解释执行的", "Java程序由一个或多个类组成其中包含main()方法的类为主类，它是程序的入口", "Java程序也可编译成可执行程序，直接运行"],
+        "answer": "Java程序也可编译成可执行程序，直接运行"
+      },
+      {
+        "type": "single",
+        "title": "2. 下面是一组关于JDK的描述，其中正确的是（ ）。",
+        "options": ["JDK只能用于运行Java程序", "JDK是一个Java程序开发平台，既可以编译Java程序，也可以运行Java程序", "JDK是一个Java程序编辑器", "JDK只能编译Java程序，但无法运行Java程序"],
+        "answer": "JDK是一个Java程序开发平台，既可以编译Java程序，也可以运行Java程序"
+      },
+      {
+        "type": "single",
+        "title": "3. 下面是一组关于Eclipse的描述，其中错误的是（ ）。",
+        "options": ["Eclipse是一个开放源代码的，基于Java的可扩展开发平台", "Eclipse可编写、编译、运行Java程序", "Eclipse实际上是一个插件，它必须依赖JDK才能工作", "Eclipse自身功能非常完善，无须任何环境支持"],
+        "answer": "Eclipse自身功能非常完善，无须任何环境支持"
+      },
+      {
+        "type": "single",
+        "title": "4. 下面是一组关于Java类的描述，其中错误的是（ ）。",
+        "options": ["所有Java程序都是由一个或多个类组成的", "Java程序中只能有一个Public（公共）类", "Java程序中只能一个主类", "Java主程序不能是类，否则无法运行程序"],
+        "answer": "Java主程序不能是类，否则无法运行程序"
+      },
+      {
+        "type": "single",
+        "title": "5. javac命令的作用是（ ）。",
+        "options": ["将源程序编译成字节码", "将字节码编译成源程序", "解释执行Java字节码", "调试Java代码"],
+        "answer": "将源程序编译成字节码"
+      },
+      {
+        "type": "single",
+        "title": "6. java命令的作用是（ ）。",
+        "options": ["将源程序编译成字节码", "将字节码编译成源程序", "解释执行Java字节码", "调试Java代码"],
+        "answer": "解释执行Java字节码"
+      },
+      {
+        "type": "single",
+        "title": "7. Java虚拟机运行Java代码时，不会进行的操作是（ ）。",
+        "options": ["加载代码", "校验代码", "编译代码", "执行代码"],
+        "answer": "编译代码"
+      },
+      {
+        "type": "single",
+        "title": "8. 下面哪个是合法的标识符（ ）。",
+        "options": ["class", "<weight>", "_name", "3color"],
+        "answer": "_name"
+      },
+      {
+        "type": "single",
+        "title": "9. 下面哪个是Java的关键字（ ）。",
+        "options": ["radius", "x", "y", "int"],
+        "answer": "int"
+      },
+      {
+        "type": "single",
+        "title": "10. 若a=13,b=5，表达式a++%b的值是（ ）。",
+        "options": ["0", "1", "3", "4"],
+        "answer": "3"
+      },
+      {
+        "type": "single",
+        "title": "11. 下面说法不正确的是（ ）。",
+        "options": ["一个表达式可以作为其他表达式的操作数", "单个常量或变量也是表达式", "表达式中各操作数的数据类型必须相同", "表达式的类型可以和操作数的类型不一样"],
+        "answer": "表达式中各操作数的数据类型必须相同"
+      },
+      {
+        "type": "single",
+        "title": "12. 下面 Java 变量声明表达式中，不正确的是（ ）。",
+        "options": ["byte b=256;", "int a=0125;", "float f=13.14F;", "double d=520D;"],
+        "answer": "byte b=256;"
+      },
+      {
+        "type": "single",
+        "title": "13. 已知i=0xffffffff，j=0x0，下面表达式中值为0的是（ ）。",
+        "options": ["i<<2", "i&j", "i^j", "i|j"],
+        "answer": "i&j"
+      },
+      {
+        "type": "single",
+        "title": "14. 下面数值赋值及转换语句中，不能编译成功的是（ ）。",
+        "options": ["int a=1+2+3;", "double d=(int)(1+2+3);", "float f=1+(int)(2.1+3.1);", "int a=(int)1.1+2.2;"],
+        "answer": "int a=(int)1.1+2.2;"
+      },
+      {
+        "type": "single",
+        "title": "15. Java属于以下哪种语言?",
+        "options": ["机器语言", "汇编语言", "高级语言", "以上都不对"],
+        "answer": "高级语言"
+      },
+      {
+        "type": "single",
+        "title": "16. 下面哪种类型的文件可以在Java虚拟机（JVM）中直接运行?",
+        "options": [".java", ".jre", ".exe", ".class"],
+        "answer": ".class"
+      },
+      {
+        "type": "single",
+        "title": "17. 安装好JDK后，在其bin目录下有许多可执行文件，其中java.exe命令的作用是（ ）。",
+        "options": ["Java文档制作工具", "Java解释器", "Java编译器", "Java启动器"],
+        "answer": "Java解释器"
+      },
+      {
+        "type": "single",
+        "title": "18. 如果JDK的安装路径为 d:\\jdk，若想在命令窗口中的任意当前路径下都能直接使用javac和java命令，需要将环境变量Path设置为（ ）。",
+        "options": ["d: \\jdk;", "d: \\jdk\\bin;", "d:\\jre\\ bin;", "d: \\jre;"],
+        "answer": "d: \\jdk\\bin;"
+      },
+      {
+        "type": "single",
+        "title": "19. 以下关于Java变量的说法中，错误的是（ ）。",
+        "options": ["变量名必须是一个有效的标识符", "变量在定义时可以没有初始值", "变量一旦被定义，在程序中的任何位置都可以被访问", "在程序中，可以将一个byte类型的值赋给一个int类型的变量，不需要特殊声明"],
+        "answer": "变量一旦被定义，在程序中的任何位置都可以被访问"
+      },
+      {
+        "type": "single",
+        "title": "20. 假设 int x = 2，三元表达式 x>0? x+1:5 的运行结果是（ ）。",
+        "options": ["0", "2", "3", "5"],
+        "answer": "3"
+      },
+      {
+        "type": "single",
+        "title": "21. 以下哪个选项可以正确创建一个长度为3的二维数组?（ ）",
+        "options": ["new int [2][3];", "new int[3][]", "new int[][3];", "以上答案皆不对"],
+        "answer": "new int[3][]"
+      },
+      {
+        "type": "single",
+        "title": "22. 请阅读下面的代码：\nint x =1;\nint y =2;\nif(x% 2==0){\n  y++;\n}else{\n  y--;\n}\nSystem.out.println(\"y= \" + y);\n程序运行结束时，变量y的值为（ ）。",
+        "options": ["0", "1", "2", "3"],
+        "answer": "1"
+      },
+      {
+        "type": "single",
+        "title": "23. 关于类中的变量修饰，下列描述错误的是（ ）。",
+        "options": ["实例变量是类的成员变量", "静态变量在第一次用到时被初始化，以后创建其他对象时不再进行初始化", "实例变量在每次创建对象时都被初始化 and 分配内存空间", "实例变量是用static修饰的成员变量"],
+        "answer": "实例变量是用static修饰的成员变量"
+      },
+      {
+        "type": "single",
+        "title": "24. 如果将一个类中成员的修饰符设置为 private，则该成员（ ）。",
+        "options": ["可以被其他包中的类访问", "只能被同一个包中的其他类访问", "只能被所在类访问", "可以被任意public类访问"],
+        "answer": "只能被所在类访问"
+      },
+      {
+        "type": "single",
+        "title": "25. 观察下面的一段程序，若要调用成员变量 a，语句正确的是（ ）。\npublic class Point{\n   int a=2;\n   public static void main(String args[]){\n      Point one=new Point();\n   }\n}",
+        "options": ["one.a", "Point.a", "point.a", "Point.one"],
+        "answer": "one.a"
+      },
+      {
+        "type": "single",
+        "title": "26. 假设有一个类名为 Point，下列表达式中属于合法构造方法的是（ ）。",
+        "options": ["int Point(){}", "Point(int x){}", "void point(int x){}", "point(int x){}"],
+        "answer": "Point(int x){}"
+      },
+      {
+        "type": "single",
+        "title": "27. 下面关于Java类中构造方法的描述，错误的是（ ）。",
+        "options": ["构造方法不可以重载", "构造方法没有返回值，但不用void声明", "构造方法名与类名相同", "构造方法可以通过new自动调用"],
+        "answer": "构造方法不可以重载"
+      },
+      {
+        "type": "single",
+        "title": "28. 在Java面向对象中，为了对外隐藏内部实现细节以增强程序的安全性，应当使用的修饰符是（ ）。",
+        "options": ["private", "无修饰符", "public", "protected"],
+        "answer": "private"
+      },
+      {
+        "type": "single",
+        "title": "29. 下面关于关键字 this 的说法中，错误的是（ ）。",
+        "options": ["this特指对某个成员的引用", "this不能在静态方法中引用", "this是对某个类的引用", "this可以用在构造方法中"],
+        "answer": "this是对某个类的引用"
+      },
+      {
+        "type": "single",
+        "title": "30. 在面向对象概念中，类中定义的方法代表了物体的（ ）。",
+        "options": ["变量", "对象", "类", "行为"],
+        "answer": "行为"
+      },
+      {
+        "type": "single",
+        "title": "31. 将类的成员的访问权限设置为默认的（不加修饰符），则该成员能被（ ）访问。",
+        "options": ["同一包中的类访问", "其他包中的类访问", "所有的类访问", "所有的类的子类访问"],
+        "answer": "同一包中的类访问"
+      },
+      {
+        "type": "single",
+        "title": "32. 以下对面向对象三大特性之一——“封装”描述正确的是（ ）。",
+        "options": ["只能对一个类中的方法进行封装，不能对属性进行封装", "如果子类继承了父类，对于父类中进行封装的方法，子类仍可直接调用", "封装的意义不大，因此在编码时尽量不要使用", "封装的主要作用在于对外隐藏内部实现细节，增强程序的安全性"],
+        "answer": "封装的主要作用在于对外隐藏内部实现细节，增强程序的安全性"
+      },
+      {
+        "type": "single",
+        "title": "33. 关于关键字 final，下面说法正确的是（ ）。",
+        "options": ["final关键字如果用于修饰成员变量，那么该成员变量必须初始化", "final关键字修饰的类只能被继承一次", "final关键字修饰的方法可以被重写", "final关键字如果用于修饰方法，该方法所在的类不能被继承"],
+        "answer": "final关键字如果用于修饰成员变量，那么该成员变量必须初始化"
+      },
+      {
+        "type": "single",
+        "title": "34. 关于面向对象特性中“方法重写（Override）”的说法，错误的是（ ）。",
+        "options": ["方法重写时返回类型不一定相同", "子类可以重写父类中定义的任何方法", "方法重写不一定发生在父类与子类之间", "子类不能重写父类的静态方法"],
+        "answer": "子类不能重写父类的静态方法"
+      },
+      {
+        "type": "single",
+        "title": "35. 下面关于“抽象类与抽象方法”的描述中，正确的是（ ）。",
+        "options": ["抽象类中至少有一个抽象方法", "抽象类只能定义抽象方法", "利用抽象类也可以创建对象", "抽象方法只包含方法声明，不包含方法体"],
+        "answer": "抽象方法只包含方法声明，不包含方法体"
+      },
+      {
+        "type": "single",
+        "title": "36. 下面关于Java中“接口（Interface）”的描述中，正确的是（ ）。",
+        "options": ["接口中可以定义实例方法", "接口中可以定义各种形式的成员变量", "接口也可以实例化", "接口中的方法都为抽象方法"],
+        "answer": "接口中的方法都为抽象方法"
+      },
+      {
+        "type": "single",
+        "title": "37. 下面程序运行的结果是（ ）。\nclass Pclassx{\n   protected void f(){\n      System.out.print(\"A’s method!\");\n   }\n}\npublic class Temp2 extends Pclassx{\n   protected void f(){\n      System.out.println(\"B’s method!\");\n   }\n   public static void main(String[] args){\n      Pclassx a=new Temp2();\n      a.f();\n   }\n}",
+        "options": ["A’s method!", "A’s method! B’s method!", "B’s method!", "B’s method! A’s method!"],
+        "answer": "B’s method!"
+      },
+      {
+        "type": "single",
+        "title": "38. 若在某一个类中定义如下方法，则该方法属于（ ）。\nabstract void MethodA();",
+        "options": ["本地方法", "最终方法", "静态方法", "抽象方法"],
+        "answer": "抽象方法"
+      },
+      {
+        "type": "single",
+        "title": "39. 关于关键字 super 的作用，下列说法错误的是（ ）。",
+        "options": ["super关键字的作用是在子类对象内部指代其父类对象的引用", "super关键字不仅可以指代子类的父类，还可以指代子类的父类的父类", "子类可以通过super关键字调用父类的方法", "子类可以通过super关键字调用父类的变量"],
+        "answer": "super关键字不仅可以指代子类的父类，还可以指代子类的父类的父类"
+      },
+      {
+        "type": "single",
+        "title": "40. 在 Java 中，有关“匿名内部类”的说法正确的是（ ）。",
+        "options": ["一种不能被实例化的类", "一种没有名字的内部类", "一种只包含静态方法的类", "一种只包含抽象方法的类"],
+        "answer": "一种没有名字的内部类"
+      },
+      {
+        "type": "single",
+        "title": "41. 在Java异常处理体系中，所有异常类的基类/父类是（ ）。",
+        "options": ["Throwable", "Error", "Exception", "AWTError"],
+        "answer": "Throwable"
+      },
+      {
+        "type": "single",
+        "title": "42. 以下对自定义异常的描述中，错误的是（ ）。",
+        "options": ["自定义异常必须继承Exception", "自定义异常可以继承自Error", "自定义异常可以更加明确定位异常出错的位置和给出详细出错信息", "程序已经提供了丰富的异常类，使用自定义异常没有意义"],
+        "answer": "程序已经提供了丰富的异常类，使用自定义异常没有意义"
+      },
+      {
+        "type": "single",
+        "title": "43. 下列哪个组合关键字选项可以用于捕获和处理运行期异常？（ ）",
+        "options": ["try-catch", "if-else", "while-loop", "for-loop"],
+        "answer": "try-catch"
+      },
+      {
+        "type": "single",
+        "title": "44. 关于类之间的“继承（Inheritance）”关系，下列说法正确的是（ ）。",
+        "options": ["超类的对象就是子类的对象", "let 一个类可以有几个超类", "一个类只能有一个子类", "一个类只能有一个超类"],
+        "answer": "一个类只能有一个超类"
+      },
+      {
+        "type": "single",
+        "title": "45. 下面关于方法重载（Overload）的定义代码中，正确的是（ ）。",
+        "options": ["int fun (int a, float b){} float fun(int a, float b){}", "float fun (int a, float b) {} float fun (int x, float y){}", "float fun (float a){} float fun(float a, float b){}", "float fun1 (int a, float b){} float fun2(int a ,float b){}"],
+        "answer": "float fun (float a){} float fun(float a, float b){}"
+      },
+      {
+        "type": "single",
+        "title": "46. 关于 Java 中多态性（Polymorphism）的说法，正确的是（ ）。",
+        "options": ["一个类中不能有同名的方法", "子类中不能有和父类中同名的方法", "子类中可以有和父类中同名且参数相同的方法", "多态性就是方法的名字可以一样，但返回的类型必须不一样"],
+        "answer": "子类中可以有和父类中同名且参数相同的方法"
+      }
+    ];
+
+    let allQuestions = JSON.parse(localStorage.getItem('mixQuestions')) || defaultQuestions; 
     let quizQuestions = []; 
     let currentIndex = 0; 
     let wrongBook = JSON.parse(localStorage.getItem('wrongBook')) || []; 
-    let selectedMultiOptions = []; 
 
     updateWrongCount();
-    
-    if(allQuestions.length > 0) {
-        initQuiz();
-    } else {
-        document.getElementById('quiz-container').innerHTML = '<p style="text-align:center;color:var(--ios-gray);padding:40px 0;">请前往导入页面，粘贴那 64 道大合集数据！</p>';
-        document.getElementById('page-ctrl-nav').style.display = 'none';
-    }
+    initQuiz();
 
     function switchTab(tab) {
         document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
@@ -151,7 +405,7 @@
         if(tab === 'upload') {
             document.querySelector('[onclick="switchTab(\'upload\')"]').classList.add('active');
             document.getElementById('upload-panel').classList.add('active');
-            titleEl.innerText = "导入题库";
+            titleEl.innerText = "导入设置";
         } else if(tab === 'quiz') {
             document.querySelector('[onclick="switchTab(\'quiz\')"]').classList.add('active');
             document.getElementById('quiz-panel').classList.add('active');
@@ -166,13 +420,13 @@
 
     function importQuestions() {
         const input = document.getElementById('json-input').value.trim();
-        if(!input) return;
+        if(!input) return alert('请输入内容');
         try {
             const parsedData = JSON.parse(input);
             if(!Array.isArray(parsedData)) return alert('数据必须是数组格式。');
             allQuestions = parsedData;
             localStorage.setItem('mixQuestions', JSON.stringify(allQuestions));
-            document.getElementById('page-ctrl-nav').style.display = 'flex';
+            alert('新题库成功覆盖默认题库！');
             initQuiz();
             switchTab('quiz');
         } catch (e) {
@@ -191,14 +445,9 @@
     }
 
     function initQuiz() {
-        // 乱序初始化，并为每个题目分配固定的打乱选项顺序（防止前后翻页时选项一直乱跳）
         let rawCopy = JSON.parse(JSON.stringify(allQuestions));
         rawCopy.forEach(q => {
-            if(q.options && q.type !== 'judge') {
-                q.shuffledOptions = shuffle([...q.options]);
-            } else if(q.type === 'judge') {
-                q.shuffledOptions = ["对", "错"];
-            }
+            if(q.options) q.shuffledOptions = shuffle([...q.options]);
         });
         quizQuestions = shuffle(rawCopy);
         currentIndex = 0;
@@ -209,7 +458,6 @@
         const container = document.getElementById('quiz-container');
         const total = quizQuestions.length;
 
-        // 控制上一题、下一题按钮的禁用状态
         document.getElementById('prev-btn').disabled = (currentIndex === 0);
         document.getElementById('next-btn').disabled = (currentIndex >= total);
 
@@ -217,9 +465,9 @@
             container.innerHTML = `
                 <div class="ios-card result-view">
                     <div class="result-icon">🎉</div>
-                    <h2>本轮复习已全通！</h2>
-                    <p style="color: var(--ios-gray); font-size:14px; margin-bottom:20px;">共完成 ${total} 道混合乱序题</p>
-                    <button class="ios-btn" onclick="initQuiz()">再刷一轮（重新打乱）</button>
+                    <h2>本轮练习已全部通关！</h2>
+                    <p style="color: var(--ios-gray); font-size:14px; margin-bottom:20px;">成功通过 ${total} 道乱序真题</p>
+                    <button class="ios-btn" onclick="initQuiz()">再挑战一轮（重新乱序）</button>
                 </div>
             `;
             document.getElementById('progress').style.width = '100%';
@@ -231,155 +479,37 @@
         document.getElementById('progress-text').innerText = `${currentIndex + 1}/${total}`;
 
         const q = quizQuestions[currentIndex];
-        selectedMultiOptions = []; 
-
-        let html = '';
-        if(q.type === 'single') html += `<span class="type-tag tag-choice">单选题</span>`;
-        else if(q.type === 'multi') html += `<span class="type-tag tag-choice" style="background:#FFF9C4; color:#F57F17;">多选题</span>`;
-        else if(q.type === 'judge') html += `<span class="type-tag tag-judge">判断题</span>`;
-        else if(q.type === 'fill') html += `<span class="type-tag tag-fill">填空题</span>`;
-        else html += `<span class="type-tag tag-flash">大题背诵闪卡</span>`;
-
-        html += `<div class="question-title">${q.title}</div>`;
-
-        // 渲染单选和判断
-        if(q.type === 'single' || q.type === 'judge') {
-            html += `<ul class="options-list">`;
-            q.shuffledOptions.forEach(opt => {
-                html += `<li class="option-item" onclick="submitSingleAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</li>`;
-            });
-            html += `</ul>`;
-        } 
-        // 渲染多选
-        else if(q.type === 'multi') {
-            html += `<ul class="options-list">`;
-            q.shuffledOptions.forEach(opt => {
-                html += `<li class="option-item multi-opt" onclick="toggleMultiSelect(this, '${opt.replace(/'/g, "\\'")}')">${opt}</li>`;
-            });
-            html += `</ul>`;
-            html += `<button class="ios-btn" style="margin-top:10px;" onclick="submitMultiAnswer()">提交多选答案</button>`;
-        }
-        // 渲染填空
-        else if(q.type === 'fill') {
-            html += `<input type="text" id="user-fill-input" class="fill-input" placeholder="请输入你的答案" autocomplete="off">`;
-            html += `<button class="ios-btn" onclick="submitFillAnswer('${q.answer.join ? q.answer.join('|') : q.answer}')">核对填空</button>`;
-            html += `<div id="fill-feedback" class="feedback-box"></div>`;
-        }
-        // 渲染简答问答卡
-        else if(q.type === 'flash') {
-            html += `<button class="ios-btn" onclick="document.getElementById('flash-box').style.display='block'">💡 看正确答案与解析</button>`;
-            html += `<div id="flash-box" class="flash-answer">${q.answer}</div>`;
-        }
-
+        let html = `<span class="type-tag tag-choice">单选题</span><div class="question-title">${q.title}</div><ul class="options-list">`;
+        
+        q.shuffledOptions.forEach(opt => {
+            html += `<li class="option-item" onclick="submitSingleAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</li>`;
+        });
+        html += `</ul>`;
         container.innerHTML = html;
     }
 
-    // 动作控制：上一题
-    function prevQuestion() {
-        if(currentIndex > 0) {
-            currentIndex--;
-            showQuestion();
-        }
-    }
+    function prevQuestion() { if(currentIndex > 0) { currentIndex--; showQuestion(); } }
+    function skipToNext() { if(currentIndex < quizQuestions.length) { currentIndex++; showQuestion(); } }
 
-    // 动作控制：跳过/进入下一题
-    function skipToNext() {
-        const total = quizQuestions.length;
-        if(currentIndex < total) {
-            currentIndex++;
-            showQuestion();
-        }
-    }
-
-    function autoNext(isFast) {
-        setTimeout(() => {
-            skipToNext();
-        }, isFast ? 1000 : 2500); // 答错留足2.5秒看解析
-    }
-
-    // 单选判断核心处理
     function submitSingleAnswer(el, selected, correct) {
         document.querySelectorAll('.option-item').forEach(i => i.style.pointerEvents = 'none');
         if(selected === correct) {
             el.classList.add('correct');
-            autoNext(true);
+            setTimeout(skipToNext, 1000);
         } else {
             el.classList.add('wrong');
             document.querySelectorAll('.option-item').forEach(i => { if(i.innerText === correct) i.classList.add('correct'); });
-            addCurrentToWrongBook();
-            autoNext(false);
-        }
-    }
-
-    // 多选
-    function toggleMultiSelect(el, opt) {
-        if(selectedMultiOptions.includes(opt)) {
-            selectedMultiOptions = selectedMultiOptions.filter(i => i !== opt);
-            el.classList.remove('selected');
-        } else {
-            selectedMultiOptions.push(opt);
-            el.classList.add('selected');
-        }
-    }
-
-    function submitMultiAnswer() {
-        const q = quizQuestions[currentIndex];
-        document.querySelectorAll('.option-item').forEach(i => i.style.pointerEvents = 'none');
-        
-        let userAnsStr = selectedMultiOptions.sort().join(',').trim();
-        let correctAnsStr = q.answer.sort().join(',').trim();
-        let items = document.querySelectorAll('.multi-opt');
-
-        if(userAnsStr === correctAnsStr) {
-            items.forEach(i => { if(selectedMultiOptions.includes(i.innerText)) i.classList.add('correct'); });
-            autoNext(true);
-        } else {
-            items.forEach(i => {
-                if(q.answer.includes(i.innerText)) i.classList.add('correct');
-                else if(selectedMultiOptions.includes(i.innerText)) i.classList.add('wrong');
-            });
-            addCurrentToWrongBook();
-            autoNext(false);
-        }
-    }
-
-    // 填空
-    function submitFillAnswer(correctAnsStr) {
-        const userAns = document.getElementById('user-fill-input').value.trim().toLowerCase();
-        const feedback = document.getElementById('fill-feedback');
-        let isRight = false;
-        let acceptableAnswers = correctAnsStr.toLowerCase().split('|');
-        
-        acceptableAnswers.forEach(ans => {
-            if(userAns === ans.trim() || (ans.trim().length > 1 && userAns.includes(ans.trim()))) {
-                isRight = true;
+            const q = quizQuestions[currentIndex];
+            if(!wrongBook.some(w => w.title === q.title)) {
+                wrongBook.push(q);
+                localStorage.setItem('wrongBook', JSON.stringify(wrongBook));
+                updateWrongCount();
             }
-        });
-
-        if(isRight) {
-            feedback.className = "feedback-box correct";
-            feedback.innerHTML = `<b>🎉 回答正确！</b><br>标准答案：${correctAnsStr.replace(/\|/g, ' 或 ')}`;
-            autoNext(true);
-        } else {
-            feedback.className = "feedback-box wrong";
-            feedback.innerHTML = `<b>❌ 回答错误。</b><br>标准答案：${correctAnsStr.replace(/\|/g, ' 或 ')}`;
-            addCurrentToWrongBook();
-            autoNext(false);
+            setTimeout(skipToNext, 2500);
         }
     }
 
-    function addCurrentToWrongBook() {
-        const q = quizQuestions[currentIndex];
-        if(!wrongBook.some(w => w.title === q.title)) {
-            wrongBook.push(q);
-            localStorage.setItem('wrongBook', JSON.stringify(wrongBook));
-            updateWrongCount();
-        }
-    }
-
-    function updateWrongCount() {
-        document.getElementById('wrong-count').innerText = wrongBook.length;
-    }
+    function updateWrongCount() { document.getElementById('wrong-count').innerText = wrongBook.length; }
 
     function renderWrongBook() {
         const container = document.getElementById('wrong-list');
@@ -389,13 +519,7 @@
         }
         let html = '';
         wrongBook.forEach((q, index) => {
-            let displayedAns = Array.isArray(q.answer) ? q.answer.join(', ') : q.answer;
-            html += `
-                <div class="wrong-item">
-                    <div class="wrong-title">${index + 1}. ${q.title}</div>
-                    <div class="wrong-ans" style="color:var(--ios-green)">参考正确答案: <br>${displayedAns}</div>
-                </div>
-            `;
+            html += `<div class="wrong-item"><div class="wrong-title">${index + 1}. ${q.title}</div><div class="wrong-ans" style="color:var(--ios-green)">参考答案: ${q.answer}</div></div>`;
         });
         container.innerHTML = html;
     }
