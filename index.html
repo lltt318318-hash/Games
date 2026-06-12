@@ -285,6 +285,325 @@
         "title": "66. 阅读下面的程序片段：\nString str1 = new String(\"java\");\nString str2 = new String(\"java\");\nStringBuffer str3 = new StringBuffer(\"java\");\n对于上述定义的变量，以下表达式的值为 true 的是（ ）。",
         "options": ["str1 == str2", "str1.equals(str2)", "str1 == str3", "以上都不对"],
         "answer": "str1.equals(str2)"
+      },
+        {
+        "type": "single",
+        "title": "67. 下面关于 Java 循环控制语句的描述中，正确的是（ ）。",
+        "options": ["do-while的循环体至少无条件执行一次", "while的循环控制条件比do-while的循环控制条件严格", "do-while允许从外部转到循环体内", "do-while的循环不能是复合语句"],
+        "answer": "do-while的循环体至少无条件执行一次"
+      },
+      {
+        "type": "single",
+        "title": "68. 下列选项中，符合 Java 语法规则的 if-else 分支控制语句是（ ）。",
+        "options": ["if(x>0) x=1; else x=-1;", "if x>0 x=1; else x=-1;", "if(x>0): x=1; else x=-1;", "if(x>0) x=1 else x=-1"],
+        "answer": "if(x>0) x=1; else x=-1;"
+      },
+      {
+        "type": "single",
+        "title": "69. 下面程序段的循环次数是（ ）。\npublic class A{\n   public static void main(String[] args){\n      int k=0;\n      while(k<10){\n         if(k<1) continue;\n         if(k==5) break;\n         k+=1;\n      }\n   }\n}",
+        "options": ["5", "6", "4", "死循环，不能确定循环次数"],
+        "answer": "死循环，不能确定循环次数"
+      },
+      {
+        "type": "single",
+        "title": "70. 执行下面 switch 语句后，变量 y 的值是（ ）。\npublic class B{\n   public static void main(String[] args){\n      int x=3;\n      int y=3;\n      switch(x+3){\n         case 6: y=1;\n         default: y+=1;\n      }\n   }\n}",
+        "options": ["1", "2", "3", "4"],
+        "answer": "2"
+      },
+      {
+        "type": "single",
+        "title": "71. 下面程序的输出结果为（ ）。\npublic class A{\n   public static void main(String[] args){\n      int a=3,b=4,c=5,d=6;\n      if(a<b||c>d)\n         System.out.println(\"who\");\n      else\n         System.out.println(\"why\");\n   }\n}",
+        "options": ["why", "who why", "who", "无结果"],
+        "answer": "who"
+      },
+      {
+        "type": "single",
+        "title": "72. 下面关于该代码段的说法中，正确的是（ ）。\nint a=10;\nint t=0;\ndo{\n   t=a++;\n}while(t<=5);",
+        "options": ["一次都不执行", "执行一次", "执行两次", "无限次执行"],
+        "answer": "执行一次"
+      },
+      {
+        "type": "single",
+        "title": "73. 在 Java I/O 中，FileInputStream、FileOutputStream 与 FileReader、FileWriter 的主要区别是（ ）。",
+        "options": ["每次读入的字节数不同", "前者带有缓存，后者没有", "前者以字节为单位读写，后者以字符为单位读写", "两者没有区别"],
+        "answer": "前者以字节为单位读写，后者以字符为单位读写"
+      },
+      {
+        "type": "single",
+        "title": "74. Java 中用于处理输入输出（I/O）流相关的类和接口大都存放在哪个包中（ ）。",
+        "options": ["java.io", "java.util", "java.math", "java.io1"],
+        "answer": "java.io"
+      },
+      {
+        "type": "single",
+        "title": "75. 下列 Java 代码中，能够正确创建低级字节输入流对象以读取文本文件的是（ ）。",
+        "options": ["FileInputStream in=new FileInputStream(\"test.txt\")", "FileInputStream in=new InputStream(new File(\"test.txt\"))", "InputStream in=new FileReader(\"test.txt\")", "InputStream in=new InputStream(\"test.txt\")"],
+        "answer": "FileInputStream in=new FileInputStream(\"test.txt\")"
+      },
+      {
+        "type": "single",
+        "title": "76. 下列用于创建支持随机读写、既能读又能写文件的 RandomAccessFile 对象的正确语句是（ ）。",
+        "options": ["RandomAccessFile rd=new RandomAccessFile(\"test.txt\",\"rw\")", "RandomAccessFile rd=new RandomAccessFile(new DataInputStream())", "RandomAccessFile rd=new RandomAccessFile(new File(\"test.txt\"))", "RandomAccessFile rd=new RandomAccessFile(\"test.txt\")"],
+        "answer": "RandomAccessFile rd=new RandomAccessFile(\"test.txt\",\"rw\")"
+      },
+      {
+        "type": "single",
+        "title": "77. 无论是输入流还是输出流，在其使用完毕后，为了释放系统底层锁定的资源，通常都需要调用哪个方法（ ）。",
+        "options": ["void close()", "void reset()", "int size()", "void flush()"],
+        "answer": "void close()"
+      },
+      {
+        "type": "single",
+        "title": "78. 在 File 类提供的方法中，用于返回当前 File 对象定义时所指向的路径字符串的方法是（ ）。",
+        "options": ["String getName()", "String getPath()", "String getParent()", "String renameTo()"],
+        "answer": "String getPath()"
+      },
+      {
+        "type": "single",
+        "title": "79. 下列选项中，哪个类不是真正的输入输出流通道（ ）。",
+        "options": ["InputStreamReader", "Reader", "System", "Writer"],
+        "answer": "System"
+      },
+      {
+        "type": "single",
+        "title": "80. File 类中，能够以字符串形式显式返回当前文件绝对路径的方法是哪一项（ ）。",
+        "options": ["getParent()", "getName()", "getAbsolutePath()", "getPath()"],
+        "answer": "getAbsolutePath()"
+      },
+      {
+        "type": "single",
+        "title": "81. 下列关于 Java 字节流的选项中，哪个流在底层内部机制中使用到了缓冲技术（ ）。",
+        "options": ["BufferedOutputStream", "FileInputStream", "FileOutputStream", "FileReader"],
+        "answer": "BufferedOutputStream"
+      },
+      {
+        "type": "single",
+        "title": "82. 在程序开发中经常需要对文本文件的内容进行读取，若想直接从文件中读取字符，最适合使用的字符流是（ ）。",
+        "options": ["Reader", "Writer", "FileReader", "FileWriter"],
+        "answer": "FileReader"
+      },
+      {
+        "type": "single",
+        "title": "83. 当 File 对象对应的实体物理文件在硬盘中不存在时，使用 File 类的哪个方法可以直接在对应的物理路径下新建该文件（ ）。",
+        "options": ["String getAbsolutePath()", "boolean canRead()", "boolean createNewFile()", "boolean exists()"],
+        "answer": "boolean createNewFile()"
+      },{
+        "type": "single",
+        "title": "84. 下面关于 Java 进程与线程的描述中，错误的是（ ）。",
+        "options": ["每个进程都有自己的内存区域", "一个进程中可以运行多个线程", "线程是Java程序的并发机制", "线程可以脱离进程单独运行"],
+        "answer": "线程可以脱离进程单独运行"
+      },
+      {
+        "type": "single",
+        "title": "85. 在线程类（Thread）或 Runnable 接口中，用于编写线程具体执行体和业务逻辑的核心方法是（ ）。",
+        "options": ["start()", "main()", "init()", "run()"],
+        "answer": "run()"
+      },
+      {
+        "type": "single",
+        "title": "86. 下面关于多线程控制状态方法的说法中，错误的是（ ）。",
+        "options": ["sleep()方法可以让当前线程放弃CPU资源", "调用yield()方法后线程进入就绪状态", "当前线程等待调用join()方法的线程结束后才能继续往下执行", "调用interrupt()方法后线程进入阻塞状态"],
+        "answer": "调用interrupt()方法后线程进入阻塞状态"
+      },
+      {
+        "type": "single",
+        "title": "87. 在多线程编程中，为了防止多个线程由于并发竞争同一共享资源而引发同步安全问题，应当使用的关键字是（ ）。",
+        "options": ["yield", "start", "run", "synchronized"],
+        "answer": "synchronized"
+      },
+      {
+        "type": "single",
+        "title": "88. 下面关于 Java 线程调度与生命周期的说法中，正确的是（ ）。",
+        "options": ["线程的调度执行是按照其优先级的高低顺序执行的", "一个线程创建好后即可立即运行", "用户可以通过实现Runnable接口来定义线程", "解除处于阻塞状态的线程后，线程便进入就绪状态"],
+        "answer": "用户可以通过实现Runnable接口来定义线程"
+      },
+      {
+        "type": "single",
+        "title": "89. 在进行低级传统的 AWT 编程时，如果需要引入全部核心组件及类，应当使用的导入语句是（ ）。",
+        "options": ["import java.awt;", "import java.awt.*", "import javax.awt;", "import javax.swing;"],
+        "answer": "import java.awt.*"
+      },
+      {
+        "type": "single",
+        "title": "90. 关于 Swing 组件与 AWT 组件的关系与特点，下列描述正确的是（ ）。",
+        "options": ["Swing是AWT的继承与扩展", "Swing不依赖操作系统技术支持", "Swing是由纯Java语言实现的轻量级构件", "以上都是"],
+        "answer": "以上都是"
+      },
+      {
+        "type": "single",
+        "title": "91. 下面关于 Java GUI 编程中组件（Component）概念的描述，错误的是（ ）。",
+        "options": ["组件是一个可视化的能与用户交互的对象", "组件必须放在容器里才能正确显示出来", "组件不能独立显示", "组件中还能放置其他组件"],
+        "answer": "组件中还能放置其他组件"
+      },
+      {
+        "type": "single",
+        "title": "92. 在传统 AWT 组件架构中，下列关于组件继承关系的描述错误的是（ ）。",
+        "options": ["TextArea可以显示多行多列文本", "TextField可以显示单行多列文本", "Component类是抽象类，其他的组件类都是该类的子类", "Container类不是Component类的子类"],
+        "answer": "Container类不是Component类的子类"
+      },
+      {
+        "type": "single",
+        "title": "93. 在 Java GUI 开发中，关于网格布局管理器（GridLayout）的特点，描述错误的是（ ）。",
+        "options": ["采用GridLayout布局管理器，容器中每个组件平均分配容器的空间", "采用GridLayout布局管理器，容器大小改变时，各组件将不再平均分配容器空间", "采用GridLayout布局管理器，容器中的组件按照从左到右、从上到下的顺序放入容器", "采用GridLayout布局管理器，容器中各个组件形成一个网络状布局"],
+        "answer": "采用GridLayout布局管理器，容器大小改变时，各组件将不再平均分配容器空间"
+      },
+      {
+        "type": "single",
+        "title": "94. 关于 GUI 事件处理机制和组件特性，下列描述错误的是（ ）。",
+        "options": ["TextField组件中按Enter键会触发ActionEvent事件", "与ActionListener接口对应的适配器类是ActionAdapter", "MouseEvent类与KeyEvent类都是InputEvent类的子类", "Frame是顶级容器，它无法直接侦听键盘输入事件"],
+        "answer": "与ActionListener接口对应的适配器类是ActionAdapter"
+      },
+      {
+        "type": "single",
+        "title": "95. 在 Java 网络编程中，主要用来封装并代表 IP 地址以及提供域名解析核心功能的类是（ ）。",
+        "options": ["InetAddress", "Socket", "URL", "ServerSocket"],
+        "answer": "InetAddress"
+      },
+      {
+        "type": "single",
+        "title": "96. 在使用 URL 类封装网络地址对象时，如果想要提取当前 URL 中对应的“主机名/域名”数据，应当调用的方法是（ ）。",
+        "options": ["getFile()", "getHostName()", "getPath()", "getHostAddress()"],
+        "answer": "getHostName()"
+      },
+      {
+        "type": "single",
+        "title": "97. 在基于 TCP 协议进行网络套接字通信编程时，服务端专门用来监听客户端连接请求、创建监听端口的核心类是（ ）。",
+        "options": ["DatagramPacket", "DatagramSocket", "ServerSocket", "Socket"],
+        "answer": "ServerSocket"
+      },
+      {
+        "type": "single",
+        "title": "98. 在利用多线程技术实现 TCP 协议的多客户端并发通信时，一台服务器通常可以同时连接处理多少个客户端（ ）。",
+        "options": ["一个", "两个", "三个", "多个"],
+        "answer": "多个"
+      },
+      {
+        "type": "single",
+        "title": "99. 在基于 UDP 协议进行无连接的网络数据报编程时，用来充当通信接收/发送端套接字的控制类是（ ）。",
+        "options": ["String", "DatagramSocket", "DatagramPacket", "Socket"],
+        "answer": "DatagramSocket"
+      },
+      {
+        "type": "single",
+        "title": "100. 在进行数据库 JDBC 编程时，使用 Connection 对象的哪个方法可以成功编译并建立一个防止 SQL 注入的 PreparedStatement 接口?（ ）",
+        "options": ["createPrepareStatement()", "prepareStatement()", "createPreparedStatement()", "preparedStatement()"],
+        "answer": "prepareStatement()"
+      },
+      {
+        "type": "single",
+        "title": "101. 当容器大小发生变化时，能够强行使容器中组件的大小不随之拉伸变形、保持原固定大小的布局管理器是（ ）。",
+        "options": ["FlowLayout", "BorderLayout", "GridLayout", "CardLayout"],
+        "answer": "FlowLayout"
+      },
+      {
+        "type": "single",
+        "title": "102. 在 Swing GUI 程序设计与实现时，使用 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) 语句的功能是（ ）。",
+        "options": ["当执行关闭窗口操作时，不做任何操作", "当执行关闭窗口操作时，调用WindowListener对象并隐藏", "当执行关闭窗口操作时，退出应用程序", "当执行关闭窗口操作时，调用WindowListener对象并结束程序"],
+        "answer": "当执行关闭窗口操作时，退出应用程序"
+      },
+      {
+        "type": "single",
+        "title": "103. 下列选项中，对 Swing 可视化组件描述错误的是（ ）。",
+        "options": ["JCheckBox是Swing中的复选框组件", "JTextArea是Swing中的文本区域组件", "JButton是Swing中的按钮组件，按钮上只能有文字", "JLabel是Swing中的标签组件"],
+        "answer": "JButton是Swing中的按钮组件，按钮上只能有文字"
+      },
+      {
+        "type": "single",
+        "title": "104. 在单行文本框 JTextField 的构造方法中，重载方法 JTextField(String text, int column) 的真实作用是（ ）。",
+        "options": ["创建一个具有指定列数的文本框，初始字符串为null", "创建一个显示指定初始字符串的文本框", "创建一个空的文本框，初始字符串为null", "创建一个具有指定列数、并显示指定初始字符串的文本框"],
+        "answer": "创建一个具有指定列数、并显示指定初始字符串的文本框"
+      },
+      {
+        "type": "single",
+        "title": "105. 在 GUI 设计中，若想将数个单选按钮 JRadioButton 组合起来，并强行实现它们之间“有你没我”的排他互斥效果，必须结合使用哪一个类（ ）。",
+        "options": ["AbstractButton", "JComboBox", "ButtonGroup", "以上都不行"],
+        "answer": "ButtonGroup"
+      },{
+        "type": "single",
+        "title": "106. 在 Java 开发中，关于 JDBC（Java Database Connectivity）的本质描述正确的是（ ）。",
+        "options": ["JDBC是一个数据管理系统", "JDBC是一个由类和接口组成的API", "JDBC是一个驱动程序", "JDBC是一组命令"],
+        "answer": "JDBC是一个由类和接口组成的API"
+      },
+      {
+        "type": "single",
+        "title": "107. 在 JDBC 编程中，用来向底层数据库正式发出连接请求并获取 Connection 连接对象的方法是（ ）。",
+        "options": ["Driver.load()", "DriverManager.load()", "Class.forName()", "DriverManager.getConnection()"],
+        "answer": "DriverManager.getConnection()"
+      },
+      {
+        "type": "single",
+        "title": "108. 在 JDBC 中，成功获取到 Connection 对象后，该对象的核心作用是（ ）。",
+        "options": ["建立一条通信某个具体数据库的通道", "加载数据库驱动程序", "清空数据库", "为数据库增加记录"],
+        "answer": "建立一条通信某个具体数据库的通道"
+      },
+      {
+        "type": "single",
+        "title": "109. 以下选项中，有关 JDBC 核心连接接口 Connection 的描述错误的是（ ）。",
+        "options": [
+          "Connection是Java程序与数据库建立的连接对象，这个对象只能用来连接数据库，不能执行SQL语句。",
+          "JDBC的数据库事务控制要靠Connection对象完成。",
+          "Connection对象使用完毕后要及时关闭,否则会对数据库造成负担。",
+          "只用MySQL和Oracle数据库的JDBC程序需要创建Connection对象，其他数据库的JDBC程序不用创建Connection对象就可以执行CRUD操作。"
+        ],
+        "answer": "只用MySQL和Oracle数据库的JDBC程序需要创建Connection对象，其他数据库的JDBC程序不用创建Connection对象就可以执行CRUD操作。"
+      },
+      {
+        "type": "single",
+        "title": "110. 在 Connection 接口提供的方法中，用于创建支持预编译、防 SQL 注入的 SQL 执行通道的方法是（ ）。",
+        "options": ["createPrepareStatement()", "prepareStatement()", "createPreparedStatement()", "preparedStatement()"],
+        "answer": "prepareStatement()"
+      },
+      {
+        "type": "single",
+        "title": "111. 在 JDBC 执行 SQL 的 Statement 接口中，下列关于其方法的描述错误的是（ ）。",
+        "options": [
+          "Statement的executeQuery()方法会返回一个结果集。",
+          "Statement的executeUpdate()方法会返回是否更新成功的boolean值。",
+          "Statement的execute()方法会返回boolean值，含义是是否返回结果集。",
+          "Statement的executeUpdate()方法会返回值是int类型，含义是DML操作影响记录数。"
+        ],
+        "answer": "Statement的executeUpdate()方法会返回是否更新成功的boolean值。"
+      },
+      {
+        "type": "single",
+        "title": "112. 以下选项关于预编译执行对象 PreparedStatement 的说法错误的是（ ）。",
+        "options": [
+          "PreparedStatement继承了Statement,可以执行预编译的SQL语句。",
+          "PreparedStatement可以有效的防止SQL注入。",
+          "PreparedStatement只能执行带问号占位符的预编译SQL，不能执行SQL语句。",
+          "PreparedStatement can 存储预编译的SQL语句，从而提升执行效率。"
+        ],
+        "answer": "PreparedStatement只能执行带问号占位符的预编译SQL，不能执行SQL语句。"
+      },
+      {
+        "type": "single",
+        "title": "113. 在编写 SQL 插入（INSERT）语句时，关于字符数据和数字数据的处理说法正确的是（ ）。",
+        "options": ["字符数据要用单引号引起来，数字数据不用", "字符数据和数字数据都需要单引号引起来", "字符数据要用双引号引起来，数字数据不用", "字符数据和数字数据都需要双引号引起来"],
+        "answer": "字符数据要用单引号引起来，数字数据不用"
+      },
+      {
+        "type": "single",
+        "title": "114. 在仓储管理系统（WMS）中，以下哪项模块功能不属于系统“管理员”的功能权限（ ）。",
+        "options": ["用户管理", "商品管理", "仓库管理", "仅查看商品信息"],
+        "answer": "仅查看商品信息"
+      },
+      {
+        "type": "single",
+        "title": "115. 在仓储管理系统的关系型数据库设计中，用户表（users）的核心主键字段通常设计为（ ）。",
+        "options": ["username", "id", "flag", "userpwd"],
+        "answer": "id"
+      },
+      {
+        "type": "single",
+        "title": "116. 在仓储管理系统的项目标准三层架构设计中，实现数据库连接或加载驱动的公共工具类（如 DB 类）通常位于哪个包下（ ）。",
+        "options": ["bean", "dao", "utils", "view"],
+        "answer": "utils"
+      },
+      {
+        "type": "single",
+        "title": "117. 以下哪项功能不属于仓储管理系统中基础“商品管理”模块应该包含的直接功能（ ）。",
+        "options": ["商品添加", "商品删除", "仓库编号修改", "商品更新"],
+        "answer": "仓库编号修改"
       }
     ];
 
