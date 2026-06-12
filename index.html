@@ -165,7 +165,127 @@
       { "type": "single", "title": "43. 下列哪个组合关键字选项可以用于捕获和处理运行期异常？（ ）", "options": ["try-catch", "if-else", "while-loop", "for-loop"], "answer": "try-catch" },
       { "type": "single", "title": "44. 关于类之间的“继承（Inheritance）”关系，下列说法正确的是（ ）。", "options": ["超类的对象就是子类的对象", "一个类可以有几个超类", "一个类只能有一个子类", "一个类只能有一个超类"], "answer": "一个类只能有一个超类" },
       { "type": "single", "title": "45. 下面关于方法重载（Overload）的定义代码中，正确的是（ ）。", "options": ["int fun (int a, float b){} float fun(int a, float b){}", "float fun (int a, float b) {} float fun (int x, float y){}", "float fun (float a){} float fun(float a, float b){}", "float fun1 (int a, float b){} float fun2(int a ,float b){}"], "answer": "float fun (float a){} float fun(float a, float b){}" },
-      { "type": "single", "title": "46. 关于 Java 中多态性（Polymorphism）的说法，正确的是（ ）。", "options": ["let 一个类中不能有同名的方法", "子类中不能有和父类中同名的方法", "子类中可以有和父类中同名且参数相同的方法", "多态性就是方法的名字可以一样，但返回的类型必须不一样"], "answer": "子类中可以有和父类中同名且参数相同的方法" }
+      { "type": "single", "title": "46. 关于 Java 中多态性（Polymorphism）的说法，正确的是（ ）。", "options": ["let 一个类中不能有同名的方法", "子类中不能有和父类中同名的方法", "子类中可以有和父类中同名且参数相同的方法", "多态性就是方法的名字可以一样，但返回的类型必须不一样"], "answer": "子类中可以有和父类中同名且参数相同的方法" },
+        {
+        "type": "single",
+        "title": "47. 下列关于 Java 数组声明和初始化的表达式中，正确的是（ ）。",
+        "options": ["int i=new int()", "double[] d=new double[30]", "char[] c=new char(1…30)", "int[][] i=new int[][3]"],
+        "answer": "double[] d=new double[30]"
+      },
+      {
+        "type": "single",
+        "title": "48. 假定有一个数组 a，则访问该数组中第一个元素的正确表达式是（ ）。",
+        "options": ["a[1]", "a[0]", "a.1", "a.0"],
+        "answer": "a[0]"
+      },
+      {
+        "type": "single",
+        "title": "49. 在 Java 中，将数组名作为方法的参数时，传递给方法的是该数组的（ ）。",
+        "options": ["值", "引用", "名称", "以上都不对"],
+        "answer": "引用"
+      },
+      {
+        "type": "single",
+        "title": "50. 假定现有 String 类型的变量 a，若想将其转换为全小写形式，应调用的方法是（ ）。",
+        "options": ["A.toUpperCase()", "A.toLowerCase()", "a.toUpperCase()", "a.toLowerCase()"],
+        "answer": "a.toLowerCase()"
+      },
+      {
+        "type": "single",
+        "title": "51. 在 Java 中，如果想比较两个 String 类型的字符串 s 和 s1 的内容是否完全相同，最合适的方法是（ ）。",
+        "options": ["s==s1", "s.equals(s1)", "s.compareTo(s1)", "s.equalsIgnoreCase(s1)"],
+        "answer": "s.equals(s1)"
+      },
+      {
+        "type": "single",
+        "title": "52. 假设已知字符串 s=\"abcdefg\"，执行语句 String s1 = s.substring(0,1) + s.substring(4) 后，s1 的值是（ ）。",
+        "options": ["s1=”abcefg”", "s1=”abefgc”", "s1=”efgabc”", "s1=”aefgbc”"],
+        "answer": "s1=”aefgbc”"
+      },
+      {
+        "type": "single",
+        "title": "53. 在 Java 集合框架中，有关 Set 集合的特性描述正确的是（ ）。",
+        "options": ["不允许包含重复元素，元素有顺序", "允许包含重复元素，元素无顺序", "允许包含重复元素，元素有顺序", "不允许包含重复元素，元素无顺序"],
+        "answer": "不允许包含重复元素，元素无顺序"
+      },
+      {
+        "type": "single",
+        "title": "54. 下列集合框架的实现类中，属于不允许包含重复元素且元素无序的是（ ）。",
+        "options": ["ArrayList", "HashTable", "HashSet", "Collection"],
+        "answer": "HashSet"
+      },
+      {
+        "type": "single",
+        "title": "55. 在 Java 集合框架中，用于存储具有键（Key）、值（Value）映射关系的双列集合核心接口是（ ）。",
+        "options": ["Set", "List", "Collection", "Map"],
+        "answer": "Map"
+      },
+      {
+        "type": "single",
+        "title": "56. 在 Java 集合框架中，有关 List 接口所对应集合的特性描述正确的是（ ）。",
+        "options": ["不允许包含重复元素，元素有顺序", "不允许包含重复元素，元素无顺序", "允许包含重复元素，元素有顺序", "允许包含重复元素，元素无顺序"],
+        "answer": "允许包含重复元素，元素有顺序"
+      },
+      {
+        "type": "single",
+        "title": "57. 在 Java 中，当程序执行发生“除以 0（如 1/0）”的算术错误时，系统会抛出的异常是（ ）。",
+        "options": ["ClassCastException", "ArithmeticException", "RuntimeException", "ArrayIndexOutOfBoundException"],
+        "answer": "ArithmeticException"
+      },
+      {
+        "type": "single",
+        "title": "58. 在 Java 异常处理中，如果需要显式地、主动地在代码中抛出一个异常对象，应该使用的关键字是（ ）。",
+        "options": ["finally", "throw", "try", "catch"],
+        "answer": "throw"
+      },
+      {
+        "type": "single",
+        "title": "59. 关于 Java 中的 try-catch-finally 异常处理结构，下列说法中正确的是（ ）。",
+        "options": ["try子句之后最多接5个catch子句", "使用多个catch子句时，子句中的异常类型可以是先父类后子类", "finally语句中的代码都会被执行", "不写try-catch语句就不会出现异常"],
+        "answer": "finally语句中的代码都会被执行"
+      },
+      {
+        "type": "single",
+        "title": "60. 下面程序的输出结果是（ ）。\nclass Test{\n   public static void main(String args[]){\n      try{\n         int i =1/0;\n      }catch(ArithmeticException e){\n         System.out.println(\"ArithmeticException\");\n      }catch(Exception e){\n         System.out.println(\"exception\");\n      }finally{\n         System.out.println(\"finally\");\n      }\n   }\n}",
+        "options": ["ArithmeticException", "exception", "exception\\nfinally", "ArithmeticException\\nfinally"],
+        "answer": "ArithmeticException\\nfinally"
+      },
+      {
+        "type": "single",
+        "title": "61. 在 Java 中，用来进行条件程序断言、用于调试目的的关键字是（ ）。",
+        "options": ["finally", "assert", "try", "catch"],
+        "answer": "assert"
+      },
+      {
+        "type": "single",
+        "title": "62. 以下哪个方法可以向 StringBuffer 对象的指定索引位置插入添加数据（ ）。",
+        "options": ["add()", "insert()", "append()", "into()"],
+        "answer": "insert()"
+      },
+      {
+        "type": "single",
+        "title": "63. String 类的 charAt() 方法的作用是（ ）。",
+        "options": ["返回指定索引处的字符", "返回指定索引处的字符串", "返回指定字符的索引", "返回指定字符串的索引"],
+        "answer": "返回指定索引处的字符"
+      },
+      {
+        "type": "single",
+        "title": "64. 在 Java 中，StringBuffer 字符串缓冲区在未指定参数时的初始默认容量是多少个字符（ ）。",
+        "options": ["12", "14", "16", "18"],
+        "answer": "16"
+      },
+      {
+        "type": "single",
+        "title": "65. 关于 StringBuffer 和 StringBuilder，下列说法中正确的是（ ）。",
+        "options": ["StringBuffer和 StringBuilder 的方法不同", "StringBuffer 和 StringBuilder都是线程安全的", "StringBuffer是线程安全的， StringBuilder不是线程安全的", "StringBuffer 不是线程安全的， StringBuilder是线程安全的"],
+        "answer": "StringBuffer是线程安全的， StringBuilder不是线程安全的"
+      },
+      {
+        "type": "single",
+        "title": "66. 阅读下面的程序片段：\nString str1 = new String(\"java\");\nString str2 = new String(\"java\");\nStringBuffer str3 = new StringBuffer(\"java\");\n对于上述定义的变量，以下表达式的值为 true 的是（ ）。",
+        "options": ["str1 == str2", "str1.equals(str2)", "str1 == str3", "以上都不对"],
+        "answer": "str1.equals(str2)"
+      }
     ];
 
     let allQuestions = JSON.parse(localStorage.getItem('mixQuestions')) || defaultQuestions; 
