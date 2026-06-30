@@ -103,7 +103,7 @@
     </div>
 
     <div id="wrong-book-panel" class="panel">
-        <button class="ios-btn" style="margin-bottom: 16px; background-color: var(--ios-orange);" onclick="startWrongPractice()">🚀 错题冲刺强化练</button>
+        <button class="ios-btn" style="margin-bottom: 16px; background-color: #FF9500;" onclick="startWrongPractice()">🚀 错题冲刺强化练</button>
         <div class="ios-card" style="padding: 10px 20px;">
             <div id="wrong-list"></div>
         </div>
@@ -118,67 +118,70 @@
 </nav>
 
 <script>
-    // 此处为题库-----
+    // 此处为题库（去掉了多余的外层 [] 嵌套）
     const defaultQuestions = [
-      [
-  { "type": "single", "title": "1. You ____ dress smartly in this office. We're very relaxed.", "options": ["has to", "don't have to", "should"], "answer": "don't have to" },
-  { "type": "single", "title": "2. We have an important meeting tomorrow, so you ____ be on time.", "options": ["have to", "shouldn't", "has to"], "answer": "have to" },
-  { "type": "single", "title": "3. I think you ____ apply for that job. You'd be perfect for it!", "options": ["has to", "should", "don't have to"], "answer": "should" },
-  { "type": "single", "title": "4. You ____ worry too much about the interview. That won't help you get the job!", "options": ["should", "have to", "shouldn't"], "answer": "shouldn't" },
-  { "type": "single", "title": "5. He ____ get up early because his job starts at 7:00 a.m.", "options": ["have to", "has to", "should"], "answer": "has to" },
-  { "type": "single", "title": "6. You ____ buy your lunch at the office canteen, because it's cheaper.", "options": ["have to", "should", "shouldn't"], "answer": "should" },
-  { "type": "single", "title": "7. They ____ smoke outside of the building. It doesn't look good for the company.", "options": ["have to", "has to", "shouldn't"], "answer": "shouldn't" },
-  { "type": "single", "title": "8. You ____ shout. I can hear you!", "options": ["don't have to", "have to", "should"], "answer": "don't have to" },
-  { "type": "single", "title": "9. She ____ get up early, because her home is quite near the college.", "options": ["has to", "doesn't have to", "should"], "answer": "doesn't have to" },
-  { "type": "single", "title": "10. ____ I finish this work before I go home?", "options": ["Don't have", "Have", "Should"], "answer": "Should" },
-  { "type": "single", "title": "11. He speaks French ____, but he speaks English better.", "options": ["well", "good", "best"], "answer": "well" },
-  { "type": "single", "title": "12. The interviewer watched her ____ as she answered the question.", "options": ["close", "closely", "closer"], "answer": "closely" },
-  { "type": "single", "title": "13. Don't press the bell so ____ or you'll break it!", "options": ["hardly", "hard", "harder"], "answer": "hard" },
-  { "type": "single", "title": "14. You need to be able to type ____ if you want to be a secretary.", "options": ["fast", "fastly", "fastest"], "answer": "fast" },
-  { "type": "single", "title": "15. She arrived ____ for her interview, and the interviewer wasn't pleased.", "options": ["late", "lately", "lates"], "answer": "late" },
-  { "type": "single", "title": "16. They couldn't hear her, as she spoke too ____", "options": ["quiet", "quieter", "quietly"], "answer": "quietly" },
-  { "type": "single", "title": "17. That candidate dressed very ____, but she didn't look smart enough", "options": ["fashionable", "fashion", "fashionably"], "answer": "fashionably" },
-  { "type": "single", "title": "18. I think I did really ____, because I felt so nervous.", "options": ["bad", "worse", "badly"], "answer": "badly" },
-  { "type": "single", "title": "19. She laughed ____ when she heard the news.", "options": ["happy", "happier", "happily"], "answer": "happily" },
-  { "type": "single", "title": "20. If you aim too ____, you might be disappointed.", "options": ["high", "higher", "highly"], "answer": "high" },
-  { "type": "single", "title": "21. My best friend, ____ is a teacher, lives in Beijing.", "options": ["who", "which", "when"], "answer": "who" },
-  { "type": "single", "title": "22. That's the apartment block ____ my cousin lives.", "options": ["when", "that", "where"], "answer": "where" },
-  { "type": "single", "title": "23. These are the shoes ____ I bought at a sale.", "options": ["which", "where", "when"], "answer": "which" },
-  { "type": "single", "title": "24. That's the teacher ____ class I missed yesterday.", "options": ["who", "whom", "whose"], "answer": "whose" },
-  { "type": "single", "title": "25. He's the one ____ music we heard on the radio.", "options": ["whose", "which", "who"], "answer": "whose" },
-  { "type": "single", "title": "26. I go to a college ____ specializes in tourism.", "options": ["where", "that", "who"], "answer": "that" },
-  { "type": "single", "title": "27. The concert hall, ____ opened last year, is very popular with locals.", "options": ["which", "where", "whose"], "answer": "which" },
-  { "type": "single", "title": "28. My teacher,____ comes from Australia, is coming on the trip.", "options": ["whose", "who", "which"], "answer": "who" },
-  { "type": "single", "title": "29. This park is the place ____ I usually come on the weekend.", "options": ["when", "where", "who"], "answer": "where" },
-  { "type": "single", "title": "30. April is the month ____ there are lots of music festivals.", "options": ["when", "whose", "where"], "answer": "when" },
-  { "type": "single", "title": "31. I'd like to eat more healthily, but I don't want to ____ my favorite food.", "options": ["give on", "give up", "give down"], "answer": "give up" },
-  { "type": "single", "title": "32. Our office is a great place because my colleagues and ____", "options": ["get along", "get over", "get down"], "answer": "get along" },
-  { "type": "single", "title": "33. You should ____ your résumé to that shop if you want to work there.", "options": ["hand out", "hand on", "hand in"], "answer": "hand in" },
-  { "type": "single", "title": "34. Nobody likes the boss, but we just have to ____ her.", "options": ["put up with", "put on with", "put over with"], "answer": "put up with" },
-  { "type": "single", "title": "35. I'm really ____ starting my new job next week.", "options": ["looking over to", "looking around to", "looking forward to"], "answer": "looking forward to" },
-  { "type": "single", "title": "36. Can you ____ for a moment, please? He is talking to a customer.", "options": ["hold by", "hold in", "hold on"], "answer": "hold on" },
-  { "type": "single", "title": "37. We'll have to ____ how much food we need for the party.", "options": ["work on", "work out", "work in"], "answer": "work out" },
-  { "type": "single", "title": "38. If you don't pay your bill, your electricity will be ____", "options": ["cut off", "cut on", "cut in"], "answer": "cut off" },
-  { "type": "single", "title": "39. Anna's work is always good. She really ____ what she does.", "options": ["takes pride on", "takes pride of", "takes pride in"], "answer": "takes pride in" },
-  { "type": "single", "title": "40. His business is doing well. It has really ____", "options": ["taken on", "taken off", "taken out"], "answer": "taken off" },
-  { "type": "single", "title": "41. They ____ each other for years before they got married.", "options": ["had known", "were knowing", "had been knowing"], "answer": "had known" },
-  { "type": "single", "title": "42. We ____ significant changes in the industry over the last decade.", "options": ["have been seeing", "have seen", "saw"], "answer": "have seen" },
-  { "type": "single", "title": "43. Amy ____ the book twice.", "options": ["reads", "had been reading", "has read"], "answer": "has read" },
-  { "type": "single", "title": "44. After we ____ work, we went out to dinner.", "options": ["were finishing", "had finished", "had been finishing"], "answer": "had finished" },
-  { "type": "single", "title": "45. They ____ all the episodes of that TV series.", "options": ["have watched", "are watching", "watch"], "answer": "have watched" },
-  { "type": "single", "title": "46. They ____ once at a wedding many years ago.", "options": ["had been meeting", "were meeting", "had met"], "answer": "had met" },
-  { "type": "single", "title": "47. Linda ____ cooked dinner for her family after the maid", "options": ["had been going", "was going", "had gone"], "answer": "had gone" },
-  { "type": "single", "title": "48. The city ____ rapidly in the past few years.", "options": ["grows", "has grown", "has growing"], "answer": "has grown" },
-  { "type": "single", "title": "49. After he ____, the apartment seemed a lot bigger.", "options": ["was moved out", "had been moving out", "had moved out"], "answer": "had moved out" },
-  { "type": "single", "title": "50. Our team ____ remarkable success in the project.", "options": ["has achieved", "is achieving", "had been achieving"], "answer": "has achieved" }
-]
+	  { "type": "single", "title": "1. You ____ dress smartly in this office. We're very relaxed.", "options": ["has to", "don't have to", "should"], "answer": "don't have to" },
+	  { "type": "single", "title": "2. We have an important meeting tomorrow, so you ____ be on time.", "options": ["have to", "shouldn't", "has to"], "answer": "have to" },
+	  { "type": "single", "title": "3. I think you ____ apply for that job. You'd be perfect for it!", "options": ["has to", "should", "don't have to"], "answer": "should" },
+	  { "type": "single", "title": "4. You ____ worry too much about the interview. That won't help you get the job!", "options": ["should", "have to", "shouldn't"], "answer": "shouldn't" },
+	  { "type": "single", "title": "5. He ____ get up early because his job starts at 7:00 a.m.", "options": ["have to", "has to", "should"], "answer": "has to" },
+	  { "type": "single", "title": "6. You ____ buy your lunch at the office canteen, because it's cheaper.", "options": ["have to", "should", "shouldn't"], "answer": "should" },
+	  { "type": "single", "title": "7. They ____ smoke outside of the building. It doesn't look good for the company.", "options": ["have to", "has to", "shouldn't"], "answer": "shouldn't" },
+	  { "type": "single", "title": "8. You ____ shout. I can hear you!", "options": ["don't have to", "have to", "should"], "answer": "don't have to" },
+	  { "type": "single", "title": "9. She ____ get up early, because her home is quite near the college.", "options": ["has to", "doesn't have to", "should"], "answer": "doesn't have to" },
+	  { "type": "single", "title": "10. ____ I finish this work before I go home?", "options": ["Don't have", "Have", "Should"], "answer": "Should" },
+	  { "type": "single", "title": "11. He speaks French ____, but he speaks English better.", "options": ["well", "good", "best"], "answer": "well" },
+	  { "type": "single", "title": "12. The interviewer watched her ____ as she answered the question.", "options": ["close", "closely", "closer"], "answer": "closely" },
+	  { "type": "single", "title": "13. Don't press the bell so ____ or you'll break it!", "options": ["hardly", "hard", "harder"], "answer": "hard" },
+	  { "type": "single", "title": "14. You need to be able to type ____ if you want to be a secretary.", "options": ["fast", "fastly", "fastest"], "answer": "fast" },
+	  { "type": "single", "title": "15. She arrived ____ for her interview, and the interviewer wasn't pleased.", "options": ["late", "lately", "lates"], "answer": "late" },
+	  { "type": "single", "title": "16. They couldn't hear her, as she spoke too ____", "options": ["quiet", "quieter", "quietly"], "answer": "quietly" },
+	  { "type": "single", "title": "17. That candidate dressed very ____, but she didn't look smart enough", "options": ["fashionable", "fashion", "fashionably"], "answer": "fashionably" },
+	  { "type": "single", "title": "18. I think I did really ____, because I felt so nervous.", "options": ["bad", "worse", "badly"], "answer": "badly" },
+	  { "type": "single", "title": "19. She laughed ____ when she heard the news.", "options": ["happy", "happier", "happily"], "answer": "happily" },
+	  { "type": "single", "title": "20. If you aim too ____, you might be disappointed.", "options": ["high", "higher", "highly"], "answer": "high" },
+	  { "type": "single", "title": "21. My best friend, ____ is a teacher, lives in Beijing.", "options": ["who", "which", "when"], "answer": "who" },
+	  { "type": "single", "title": "22. That's the apartment block ____ my cousin lives.", "options": ["when", "that", "where"], "answer": "where" },
+	  { "type": "single", "title": "23. These are the shoes ____ I bought at a sale.", "options": ["which", "where", "when"], "answer": "which" },
+	  { "type": "single", "title": "24. That's the teacher ____ class I missed yesterday.", "options": ["who", "whom", "whose"], "answer": "whose" },
+	  { "type": "single", "title": "25. He's the one ____ music we heard on the radio.", "options": ["whose", "which", "who"], "answer": "whose" },
+	  { "type": "single", "title": "26. I go to a college ____ specializes in tourism.", "options": ["where", "that", "who"], "answer": "that" },
+	  { "type": "single", "title": "27. The concert hall, ____ opened last year, is very popular with locals.", "options": ["which", "where", "whose"], "answer": "which" },
+	  { "type": "single", "title": "28. My teacher,____ comes from Australia, is coming on the trip.", "options": ["whose", "who", "which"], "answer": "who" },
+	  { "type": "single", "title": "29. This park is the place ____ I usually come on the weekend.", "options": ["when", "where", "who"], "answer": "where" },
+	  { "type": "single", "title": "30. April is the month ____ there are lots of music festivals.", "options": ["when", "whose", "where"], "answer": "when" },
+	  { "type": "single", "title": "31. I'd like to eat more healthily, but I don't want to ____ my favorite food.", "options": ["give on", "give up", "give down"], "answer": "give up" },
+	  { "type": "single", "title": "32. Our office is a great place because my colleagues and ____", "options": ["get along", "get over", "get down"], "answer": "get along" },
+	  { "type": "single", "title": "33. You should ____ your résumé to that shop if you want to work there.", "options": ["hand out", "hand on", "hand in"], "answer": "hand in" },
+	  { "type": "single", "title": "34. Nobody likes the boss, but we just have to ____ her.", "options": ["put up with", "put on with", "put over with"], "answer": "put up with" },
+	  { "type": "single", "title": "35. I'm really ____ starting my new job next week.", "options": ["looking over to", "looking around to", "looking forward to"], "answer": "looking forward to" },
+	  { "type": "single", "title": "36. Can you ____ for a moment, please? He is talking to a customer.", "options": ["hold by", "hold in", "hold on"], "answer": "hold on" },
+	  { "type": "single", "title": "37. We'll have to ____ how much food we need for the party.", "options": ["work on", "work out", "work in"], "answer": "work out" },
+	  { "type": "single", "title": "38. If you don't pay your bill, your electricity will be ____", "options": ["cut off", "cut on", "cut in"], "answer": "cut off" },
+	  { "type": "single", "title": "39. Anna's work is always good. She really ____ what she does.", "options": ["takes pride on", "takes pride of", "takes pride in"], "answer": "takes pride in" },
+	  { "type": "single", "title": "40. His business is doing well. It has really ____", "options": ["taken on", "taken off", "taken out"], "answer": "taken off" },
+	  { "type": "single", "title": "41. They ____ each other for years before they got married.", "options": ["had known", "were knowing", "had been knowing"], "answer": "had known" },
+	  { "type": "single", "title": "42. We ____ significant changes in the industry over the last decade.", "options": ["have been seeing", "have seen", "saw"], "answer": "have seen" },
+	  { "type": "single", "title": "43. Amy ____ the book twice.", "options": ["reads", "had been reading", "has read"], "answer": "has read" },
+	  { "type": "single", "title": "44. After we ____ work, we went out to dinner.", "options": ["were finishing", "had finished", "had been finishing"], "answer": "had finished" },
+	  { "type": "single", "title": "45. They ____ all the episodes of that TV series.", "options": ["have watched", "are watching", "watch"], "answer": "have watched" },
+	  { "type": "single", "title": "46. They ____ once at a wedding many years ago.", "options": ["had been meeting", "were meeting", "had met"], "answer": "had met" },
+	  { "type": "single", "title": "47. Linda ____ cooked dinner for her family after the maid", "options": ["had been going", "was going", "had gone"], "answer": "had gone" },
+	  { "type": "single", "title": "48. The city ____ rapidly in the past few years.", "options": ["grows", "has grown", "has growing"], "answer": "has grown" },
+	  { "type": "single", "title": "49. After he ____, the apartment seemed a lot bigger.", "options": ["was moved out", "had been moving out", "had moved out"], "answer": "had moved out" },
+	  { "type": "single", "title": "50. Our team ____ remarkable success in the project.", "options": ["has achieved", "is achieving", "had been achieving"], "answer": "has achieved" }
     ];
 
     let allQuestions = JSON.parse(localStorage.getItem('mixQuestions')) || defaultQuestions; 
     let quizQuestions = []; 
     let currentIndex = 0; 
     let wrongBook = JSON.parse(localStorage.getItem('wrongBook')) || []; 
-    let isWrongPracticeMode = false; // 🔍 新增：判断当前是不是“纯错题练习”模式
+    let isWrongPracticeMode = false; 
+
+    // 初始化时纠正潜在的旧本地缓存错误格式
+    if (allQuestions.length === 1 && Array.isArray(allQuestions[0])) {
+        allQuestions = allQuestions[0];
+    }
 
     updateWrongCount();
     initQuiz();
@@ -208,8 +211,11 @@
         const input = document.getElementById('json-input').value.trim();
         if(!input) return alert('请输入内容');
         try {
-            const parsedData = JSON.parse(input);
+            let parsedData = JSON.parse(input);
             if(!Array.isArray(parsedData)) return alert('数据必须是数组格式。');
+            // 如果用户导进来的数据也错误包裹了双层数组，在此自动解包
+            if(parsedData.length === 1 && Array.isArray(parsedData[0])) parsedData = parsedData[0];
+            
             allQuestions = parsedData;
             localStorage.setItem('mixQuestions', JSON.stringify(allQuestions));
             isWrongPracticeMode = false;
@@ -242,7 +248,6 @@
         showQuestion();
     }
 
-    // 🔍 新增：抽离错题出来单独强化练
     function startWrongPractice() {
         if (wrongBook.length === 0) {
             alert('目前错题本里空空如也，不需要特训哦！');
@@ -250,19 +255,15 @@
         }
         isWrongPracticeMode = true;
         
-        // 从错题缓存中深拷贝一份
         let rawWrongCopy = JSON.parse(JSON.stringify(wrongBook));
         rawWrongCopy.forEach(q => {
-            // 重新随机洗牌选项，并重置做题状态
             if(q.options) q.shuffledOptions = shuffle([...q.options]);
             q.userSelected = null;
         });
         
-        // 彻底打乱错题集的顺序
         quizQuestions = shuffle(rawWrongCopy);
         currentIndex = 0;
         
-        // 自动跳转回刷题面板
         switchTab('quiz');
         showQuestion();
     }
@@ -294,7 +295,6 @@
 
         const q = quizQuestions[currentIndex];
         
-        // 渲染专属顶部标签
         let tagHtml = isWrongPracticeMode ? 
             `<span class="type-tag tag-wrong-mode">🔥 错题特训模式</span>` : 
             `<span class="type-tag tag-choice">单选题</span>`;
@@ -311,7 +311,8 @@
                     statusClass += ' wrong';
                 }
             }
-            html += `<li class="option-item${statusClass}" onclick="submitSingleAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</li>`;
+            // 🔍 修复点：添加 data-val 属性，避免未来由于 innerText 比对机制导致的异常
+            html += `<li class="option-item${statusClass}" data-val="${opt.replace(/"/g, '&quot;')}" onclick="submitSingleAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</li>`;
         });
         html += `</ul>`;
         container.innerHTML = html;
@@ -336,9 +337,11 @@
             setTimeout(skipToNext, 1000);
         } else {
             el.classList.add('wrong');
-            document.querySelectorAll('.option-item').forEach(i => { if(i.innerText === correct) i.classList.add('correct'); });
+            // 🔍 修复点：通过之前绑定的 data-val 属性精准查找正确选项，绝不会漏网
+            document.querySelectorAll('.option-item').forEach(i => { 
+                if(i.getAttribute('data-val') === correct) i.classList.add('correct'); 
+            });
             
-            // 只有在非错题特训模式下，才需要往里面重复添加错题
             if(!wrongBook.some(w => w.title === q.title)) {
                 wrongBook.push(q);
                 localStorage.setItem('wrongBook', JSON.stringify(wrongBook));
